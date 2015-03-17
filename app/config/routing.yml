@@ -1,0 +1,8 @@
+pbc_notification:
+    resource: "@PbcNotificationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
