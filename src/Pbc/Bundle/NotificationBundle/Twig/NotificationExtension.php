@@ -47,8 +47,14 @@ class NotificationExtension extends \Twig_Extension {
 
         return array(
             'notify_all' => new \Twig_Function_Method($this, 'renderAll', array('is_safe' => array('html'))),
-            'notify_one' => new \Twig_Function_Method($this, 'renderOne', array('is_safe' => array('html')))
+            'notify_one' => new \Twig_Function_Method($this, 'renderOne', array('is_safe' => array('html'))),
+            'notify_resources' => new \Twig_Function_Method($this, 'renderResources', array('is_safe' => array('html')))
         );
+    }
+
+    public function renderResources() {
+        return $this->container->get('templating')
+                        ->render("PbcNotificationBundle:Notification:resources.html.twig");
     }
 
     public function getName() {
