@@ -43,6 +43,14 @@ class NotificationExtension extends \Twig_Extension {
         return null;
     }
 
+    public function getFunctions() {
+
+        return array(
+            'notify_all' => new \Twig_Function_Method($this, 'renderAll', array('is_safe' => array('html'))),
+            'notify_one' => new \Twig_Function_Method($this, 'renderOne', array('is_safe' => array('html')))
+        );
+    }
+
     public function getName() {
 
         return 'pbc_notification_extension';
