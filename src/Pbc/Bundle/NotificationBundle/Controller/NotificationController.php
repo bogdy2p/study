@@ -40,4 +40,40 @@ class NotificationController {
         }
     }
 
+    /**
+     * Check the flashBag and $this->flashes for existence of $name
+     * @param type $name
+     * @return boolean
+     */
+    public function has($name) {
+        if ($this->session->getFlashBag()->has($name)) {
+            return true;
+        } else {
+            return isset($this->flashes[$name]);
+        }
+    }
+
+    /**
+     * Search for a specific notification and return matches from flashBag and $this->flashes
+     * @param type $name
+     * @return type
+     */
+    public function get($name) {
+        if ($this->session->getFlashBag()->has($name) && isset($this->flashes[$name])) {
+            return array_merge_recursive($this->session->getFlashBag()->getName(), $this->flashes[$name]);
+        } elseif ($this->session->getFlashBag()->has($name)) {
+            return $this->session->getFlashBag()->get($name);
+        } else {
+            return $this->flashes[$name];
+        }
+    }
+
+    /**
+     * Merge all flashBag and $this->flashes values and return the array
+     * @return array
+     */
+    public function all() {
+        return array_merge_recursive($this->session->getFlashBag()->all(), $this->flashes);
+    }
+
 }
