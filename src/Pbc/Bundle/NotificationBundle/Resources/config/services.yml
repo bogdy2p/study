@@ -1,2 +1,10 @@
 ## YAML Template.
 ---
+##First set up a parameter for our controller's namespace ( pbc.notification.class )
+parameters:
+    pbc.notification.class: Pbc\Bundle\NotificationBundle\Controller\NotificationController
+##Register a service called : pbc.notify which gets an instance of our controller using the class namespace parameter
+##The % symbol wrapping the parameter name mean symfony is looking for a parameter value rather than interpreting the value as a string.
+services:
+    pbc.notify:
+        class: "%pbc.notification.class%"
