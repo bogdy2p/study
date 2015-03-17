@@ -10,6 +10,13 @@ services:
         class: "%pbc.notification.class%"
         arguments:
             session: @session
+            defaults:
+                message: %pbc.notify.message%
+                title: %pbc.notify.title%
+                class: %pbc.notify.class%
+                type: %pbc.notify.type%
+                lifetime: %pbc.notify.lifetime%
+                click_to_close: %pbc.notify.click_to_close%
     pbc.twig.message_extension:
         class: Pbc\Bundle\NotificationBundle\Twig\NotificationExtension
         arguments: [@service_container]

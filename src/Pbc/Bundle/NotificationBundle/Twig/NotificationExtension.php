@@ -62,4 +62,21 @@ class NotificationExtension extends \Twig_Extension {
         return 'pbc_notification_extension';
     }
 
+    public function load(array $configs, ContainerBuilder $container){
+        
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+        
+        $container->setParameter("pbc.notify.message", $config["message"]);
+        $container->setParameter("pbc.notify.title", $config["title"]);
+        $container->setParameter("pbc.notify.class", $config["class"]);
+        $container->setParameter("pbc.notify.type", $config["type"]);
+        $container->setParameter("pbc.notify.lifetime", $config["lifetime"]);
+        $container->setParameter("pbc.notify.click_to_close", $config["click_to_close"]);
+        
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yml');
+        
+    }
+    
 }

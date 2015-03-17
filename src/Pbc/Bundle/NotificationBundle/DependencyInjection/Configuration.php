@@ -23,6 +23,14 @@ class Configuration implements ConfigurationInterface
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
+        $rootNode->children()
+                ->scalarNode("message")->defaultValue("")->end()
+                ->scalarNode("title")->defaultValue("")->end()
+                ->scalarNode("class")->defaultValue("notice")->end()
+                ->scalarNode("type")->defaultValue("flash")->end()
+                ->scalarNode("lifetime")->defaultValue(6000)->end()
+                ->scalarNode("click_to_close")->defaultFalse()->end()
+                ->end();
 
         return $treeBuilder;
     }

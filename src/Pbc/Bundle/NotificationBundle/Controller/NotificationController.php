@@ -4,17 +4,17 @@ namespace Pbc\Bundle\NotificationBundle\Controller;
 
 class NotificationController {
 
-    private $defaults = array(
-                "type" => "flash",
-                    ),
+    private $defaults = array(),
             $flashes = array(),
             $session;
 
     /**
      * @param \Symfony\Component\HttpFoundation\Session\Session $session
+     * @param array $defaults
      */
-    public function __construct(\Symfony\Component\HttpFoundation\Session\Session $session) {
+    public function __construct(\Symfony\Component\HttpFoundation\Session\Session $session, array $defaults) {
         $this->session = $session;
+        $this->defaults = $defaults;
     }
 
     /**
