@@ -10,3 +10,8 @@ services:
         class: "%pbc.notification.class%"
         arguments:
             session: @session
+    pbc.twig.message_extension:
+        class: Pbc\Bundle\NotificationBundle\Twig\NotificationExtension
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }
