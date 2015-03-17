@@ -9,11 +9,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/testing/notifications")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return array('name' => $name);
+        $notify = $this->get("pbc.notify");
+        $notify->add("test", array("type" => "instant", "message" => "this is awesome"));
+        
+        if($notify->has("test")) {
+            return array("notifications" => $notify->get("test"));
+        }
+        return array();
     }
 }
