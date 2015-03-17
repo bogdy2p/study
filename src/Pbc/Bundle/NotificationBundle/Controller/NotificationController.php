@@ -7,7 +7,15 @@ class NotificationController {
     private $defaults = array(
                 "type" => "flash",
                     ),
-            $flashes = array();
+            $flashes = array(),
+            $session;
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Session\Session $session
+     */
+    public function __construct(\Symfony\Component\HttpFoundation\Session\Session $session) {
+        $this->session = $session;
+    }
 
     /**
      * Depending on the argument , add the values to the session flashBag or $this->flashes

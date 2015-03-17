@@ -8,3 +8,5 @@ parameters:
 services:
     pbc.notify:
         class: "%pbc.notification.class%"
+        arguments:
+            session: @session
