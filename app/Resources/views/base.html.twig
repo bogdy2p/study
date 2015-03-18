@@ -5,9 +5,15 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {{ notify_resources() }}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            
+            <div id="notify_container"></div>
+            
+            {{ notify_all("notify_container") }}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
